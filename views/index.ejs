@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full bg-slate-400">
+        <div class="p-4 w-[80vw] mx-auto flex justify-between  ">
+            <a href="/">Home</a>
+            <a href="/add-user">Add user</a>
+        </div>
+    
+        
+    </div>
+    </div>
+    
+    <div class="w-[425px] mt-5 p-4 flex flex-col justify-center mx-auto bg-slate-200">
+        <h1 class="text-2xl text-center font-semibold">USERS'S DATA</h1>
+        
+       <% for (let i=0; i < users.length; i++ ) { %>
+
+        <div class="flex justify-between items-center gap-4 mt-4 ">
+            <div class="flex gap-2 items-center">
+                <img src="<%= users[i].img %>" class = "rounded-full object-cover h-14 w-14" alt="">
+                <div class="">
+                    <h1 class="font-semibold"><%= users[i].name %></h1>
+                    <p class="font-light italic"><%= users[i].email %></p>
+                </div>
+            </div>
+            
+
+            <div class="flex items-center gap-2">
+                
+                <form action="/delete" method="post">
+                    <input type="hidden" name="userId" value="<%= i %>">
+                    <button type="submit" class="bg-red-400 p-1">delete</button>
+                </form>
+                <form action="/edit" method="post">
+                    <input type="hidden" name="userId" value="<%= i %>">
+                    <button type="submit" class="bg-green-400 p-1">edit</button>
+                </form>
+            </div>
+        </div>
+    <% } %>
+
+        
+    </div>
+</body>
+</html>
